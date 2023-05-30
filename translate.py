@@ -1,6 +1,6 @@
 import openpyxl
 import openai
-openai.api_key = "sk-"
+openai.api_key = ""
 input_file = './data/Spec_JP.xlsx'
 workbook = openpyxl.load_workbook(input_file)
 sheet = workbook.active
