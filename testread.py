@@ -1,8 +1,7 @@
 import openpyxl
 import openai
-openai.organization = "org-GmVj8l2x5Oe8yLYMN6MdQG3e"
-openai.api_key = "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"
-input_file = './data/data.xlsx'
+openai.api_key = ""
+input_file = './data/Testcase_JP.xlsx'
 workbook = openpyxl.load_workbook(input_file)
 sheet = workbook.active
 for row in sheet.iter_rows():
@@ -10,7 +9,7 @@ for row in sheet.iter_rows():
         if cell.value:
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": ("translate this japanese to vietnamese: " + cell.value ),},
+                messages=[{"role": "user", "content": ("translate this japanese to vietnamese (if you see special character, english or you cant translate, response exactly what I input): [" + cell.value + "]"),},
                 ]
             )
             modified_content = response['choices'][0]['message']['content']
