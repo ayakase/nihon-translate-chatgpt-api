@@ -52,7 +52,7 @@ hãy dịch toàn bộ tin nhắn  sang tiếng việt với cùng định dạn
 def translate(sheet):
     token = 0
     token_accumulator = 0
-    openai.api_key = "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"
+    openai.api_key = ""
     for row in sheet.iter_rows():
         row_str = ""
         for cell in row:
