@@ -2,7 +2,7 @@ import openai
 import openpyxl 
 import re
 import tiktoken
-import json
+import apikey
 import time
 encoding = tiktoken.get_encoding("cl100k_base")
 encoding = tiktoken.encoding_for_model("gpt-3.5-turbo")
@@ -52,7 +52,7 @@ hãy dịch toàn bộ tin nhắn  sang tiếng việt với cùng định dạn
 def translate(sheet):
     token = 0
     token_accumulator = 0
-    openai.api_key = ""
+    openai.api_key = apikey.api_key
     for row in sheet.iter_rows():
         row_str = ""
         for cell in row:
@@ -78,9 +78,10 @@ def translate(sheet):
                 messages = messages
             )
             print(token_accumulator)
-            if (token_accumulator > 18000):
-                time.sleep(30)
+            if (token_accumulator > 20000):
                 print("30s until next request")
+                time.sleep(30)
+                print("continue")
                 token_accumulator = 0
             token += response['usage']['total_tokens']
             translated = response['choices'][0]['message']['content']
