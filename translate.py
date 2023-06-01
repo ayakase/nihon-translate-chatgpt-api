@@ -78,7 +78,7 @@ def translate(sheet):
                 messages = messages
             )
             print(token_accumulator)
-            if (token_accumulator > 20000):
+            if (token_accumulator > 18000):
                 time.sleep(30)
                 print("30s until next request")
                 token_accumulator = 0
